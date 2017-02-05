@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +15,42 @@ namespace DbBackup
     {
         static void Main(string[] args)
         {
-            Server myServer = ConnectToServer();
+            Server myServer = ConnectToServer(@".\SQLEXPRESS");
 
             Database database = new Database { Name = "MyDb" };
 
-            CreateFullDbBackup(myServer, database);
+            string directory = CheckDirectory(@"C:\BackupDb\");
+
+
+            CreateFullDbBackup(myServer, database, directory);            
+            CleanBackupDb(database, directory, DateTime.Today.AddDays(-3));
         }
 
-        private static void CreateFullDbBackup(Server myServer, Database database)
+        private static Server ConnectToServer(string serverName)
         {
+            Server myServer = new Server(serverName);
+            myServer.ConnectionContext.LoginSecure = true;
+            myServer.ConnectionContext.Connect();
+            return myServer;
+        }       
+
+        private static string CheckDirectory(string directoryPath)
+        {            
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            return directoryPath;
+        }
+
+
+        private static void CreateFullDbBackup(Server myServer, Database database, string directory)
+        {
+            var fileName = directory + database.Name + "_" + DateTime.Today.Date.Year + DateTime.Today.Date.Month + DateTime.Today.Date.Day + ".bak";
+
+            if (File.Exists(fileName)) CleanBackupDb(database, directory, DateTime.Today);
+
             Backup backup = new Backup
             {
                 Action = BackupActionType.Database,
@@ -31,8 +59,8 @@ namespace DbBackup
             /* Specify whether you want to back up database or files or log */
             /* Specify the name of the database to back up */
             /* You can take backup on several media type (disk or tape), here I am
-             * using File type and storing backup on the file system */
-            backup.Devices.AddDevice(@"D:\" + database.Name + DateTime.Now.Date.Year + DateTime.Now.Date.Month + DateTime.Now.Date.Day + ".bak", DeviceType.File);
+             * using File type and storing backup on the file system */            
+            backup.Devices.AddDevice(fileName, DeviceType.File);
             backup.BackupSetName = database.Name + "database Backup";
             backup.BackupSetDescription = database.Name + " database - Full Backup";
             /* You can specify the expiration date for your backup data
@@ -60,12 +88,18 @@ namespace DbBackup
             backup.SqlBackup(myServer);
         }
 
-        private static Server ConnectToServer()
+        private static bool CleanBackupDb(Database database, string directory, DateTime date)
         {
-            Server myServer = new Server(@".\SQLEXPRESS");
-            myServer.ConnectionContext.LoginSecure = true;
-            myServer.ConnectionContext.Connect();
-            return myServer;
+            DateTime days = date;
+
+            string fileName = directory + database.Name + "_" + days.Date.Year + days.Month + days.Day + ".bak";
+
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            return true;
         }
 
         private static void Target(object sender, PercentCompleteEventArgs percentCompleteEventArgs)
@@ -77,7 +111,6 @@ namespace DbBackup
         {
             Console.WriteLine(serverMessageEventArgs.ToString());
         }
-
        
 
     }
