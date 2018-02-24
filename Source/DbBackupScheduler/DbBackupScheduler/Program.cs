@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,22 +9,42 @@ using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
 
-
 namespace DbBackup
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            Server myServer = ConnectToServer(@".\SQLEXPRESS");
+        {                                   
 
-            Database database = new Database { Name = "MyDb" };
-
-            string directory = CheckDirectory(@"C:\BackupDb\");
+            var serverName = ConfigurationManager.AppSettings["ServerName"];
+            Server server = ConnectToServer(serverName);
 
 
-            CreateFullDbBackup(myServer, database, directory);            
-            CleanBackupDb(database, directory, DateTime.Today.AddDays(-3));
+            var backupDatabases = ConfigurationManager.AppSettings["BackupDatabases"];
+            var databaseNames = backupDatabases.Split(',');
+
+            List<Database> databases = new List<Database>();
+            foreach (var databaseName in databaseNames)
+            {
+                databases.Add(new Database { Name = databaseName });
+            }
+
+
+            string directory = CheckDirectory(@"C:\DATA\Hosting\DbBackup\");
+
+
+            foreach (var database in databases)
+            {
+                try
+                {
+                    CreateFullDbBackup(server, database, directory);
+                    CleanBackupDb(database, directory, DateTime.Today.AddDays(-3));
+                }
+                catch (Exception e)
+                {
+                    //write exception log
+                }
+            }
         }
 
         private static Server ConnectToServer(string serverName)
@@ -85,7 +106,14 @@ namespace DbBackup
             /* SqlBackup method starts to take back up
              * You can also use SqlBackupAsync method to perform the backup 
              * operation asynchronously */
-            backup.SqlBackup(myServer);
+            try
+            {
+                backup.SqlBackup(myServer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private static bool CleanBackupDb(Database database, string directory, DateTime date)
