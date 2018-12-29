@@ -12,7 +12,7 @@ namespace DbBackup
             bool.TryParse(ConfigurationManager.AppSettings["UseBaseBackupDirectory"], out isUseBaseBackupDirectory);
 
             var backupDirectory = isUseBaseBackupDirectory
-                ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backups")
+                ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backups\\")
                 : ConfigurationManager.AppSettings["BackupDirectory"];
 
             string directory = CheckDirectory(backupDirectory);
