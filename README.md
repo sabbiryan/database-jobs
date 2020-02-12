@@ -10,3 +10,8 @@ Step 6: Define your directory by modifying this line of code. <code>string direc
 <br/>
 All are set now. Build and run the program.
 
+
+# Rebuild Index
+Rebuild all index of a database in SQL Server <br/>
+Command: Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'
+
