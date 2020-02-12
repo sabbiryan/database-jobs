@@ -1,4 +1,4 @@
-# SQL-Server-Maintenance-Schedulers
+# SQL Server Maintenance
 
 ### DbBackup Scheduler
 Step 1: Clone this repo using <code>git clone https://github.com/sabbiryan/SQL-Server-Maintenance-Schedulers.git</code> from your terminal or cmd.<br/>
