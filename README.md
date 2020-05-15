@@ -1,9 +1,9 @@
-### Features
+#### Features
 1. Automatic DB Backup Job
 2. Automatically push backup DB to Azure Storage / AWS S3 Storage
 3. Automatic Index Maintenance
 
-### How to user it
+#### How to user it
  * Register as windows task scheduler
 
 #### Getting Start
@@ -31,7 +31,7 @@ Command: Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? 
 Reorganize all index of a database in SQL Server <br/>
 Command: Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'
 
-### Azure VM Maintenance
+#### Azure VM Maintenance
 Azure vm size scaling up and down using runbooks and monitoring https://www.petri.com/automatically-resize-azure-vm
 
 
