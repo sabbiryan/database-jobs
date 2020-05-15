@@ -24,10 +24,7 @@ namespace DbBackup
 
             List<Database> databases = DatabaseProvider.GetDatabasesToBackup();
 
-            string directory = DirectoryProvider.GetBackupDirectory();
-
-
-            BackupBuilder.GenerateBackups(server, databases, directory);
+            BackupBuilder.GenerateBackups(server, databases);
         }
 
 

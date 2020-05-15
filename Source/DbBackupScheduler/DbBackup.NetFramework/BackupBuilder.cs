@@ -13,29 +13,33 @@ namespace DbBackup
 {
     public class BackupBuilder
     {
-        public static void GenerateBackups(Server server, List<Database> databases, string directory)
+        public static void GenerateBackups(Server server, List<Database> databases)
         {
-
             foreach (var database in databases)
             {
                 try
                 {
-                    var backupFileName = CreateFullDbBackup(server, database, directory);
+                    //Create backup
+                    var backupFileName = CreateFullDbBackup(server, database);
 
+                    //Create zip of backup
                     var zip = ZipBuilder.Zip(backupFileName.BakToZip(), new List<string>()
                     {
                         backupFileName
                     });
 
-                    //write code for push zip backup to azure storage
 
+                    //Push to azure storage
+
+
+                    //Clean older backups of last 30 days
                     if (AppSettings.RemoveBackupAfterXDays.HasValue)
                     {
                         var backupRemoveTillDate = DateTime.Today.AddDays(-AppSettings.RemoveBackupAfterXDays.GetValueOrDefault());
 
                         for (DateTime i = backupRemoveTillDate; i > DateTime.Today.AddMonths(-1); i = i.AddDays(-1))
                         {
-                            var removeFileName = database.GetBackupFileName(directory, i);
+                            var removeFileName = database.GetBackupFileName(i);
                             CleanBackupDb(removeFileName);
                         }
                     }
@@ -51,9 +55,9 @@ namespace DbBackup
 
 
 
-        private static string CreateFullDbBackup(Server myServer, Database database, string directory)
+        private static string CreateFullDbBackup(Server myServer, Database database)
         {
-            var fileName = database.GetBackupFileName(directory, DateTime.Today);
+            var fileName = database.GetBackupFileName(DateTime.Today);
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
