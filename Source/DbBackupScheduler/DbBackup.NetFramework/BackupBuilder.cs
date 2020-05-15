@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using DbBackup.AzurePush;
 using DbBackup.Shared;
 using DbBackup.Shared.Extensions;
 using DbBackup.Zipper;
@@ -30,6 +31,7 @@ namespace DbBackup
 
 
                     //Push to azure storage
+                    AzureBlobManager.Push(zip);
 
 
                     //Clean older backups of last 30 days
@@ -123,6 +125,8 @@ namespace DbBackup
             if (File.Exists(bakToZip))
             {
                 File.Delete(bakToZip);
+
+                AzureBlobManager.Delete(bakToZip);
             }
 
             return true;

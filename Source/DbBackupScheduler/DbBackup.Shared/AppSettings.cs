@@ -9,6 +9,7 @@ namespace DbBackup.Shared
         public static string BackupDatabases => ConfigurationManager.AppSettings["BackupDatabases"];
         public static bool UseRootBackupDirectory => Convert.ToBoolean(ConfigurationManager.AppSettings["UseRootBackupDirectory"]);
         public static string BackupDirectoryPath => ConfigurationManager.AppSettings["BackupDirectoryPath"];
+        public static bool PushToAzureStorage => Convert.ToBoolean(ConfigurationManager.AppSettings["PushToAzureStorage"]);
         public static int? RemoveBackupAfterXDays => GetRemoveBackupAfterDays();
 
 
