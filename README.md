@@ -1,7 +1,7 @@
 #### Features
 1. Automatic DB Backup Job
 2. Automatically push backup DB to Azure Storage / AWS S3 Storage
-3. Automatic Index Maintenance
+3. Automatic Index Maintenance (upcomming)
 
 #### How to user it
  * Register as windows task scheduler
