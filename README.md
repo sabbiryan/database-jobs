@@ -1,14 +1,24 @@
-### SQL Server Maintenance
+### Features
+1. Automatic DB Backup Job (Register as windows task scheduler)
+2. Automatically push backup DB to Azure Storage / AWS S3 Storage
+3. Automatic Index Maintenance (Register as windows task scheduler)
 
-#### DbBackup Scheduler
-Step 1: Clone this repo using <code>git clone https://github.com/sabbiryan/SQL-Server-Maintenance-Schedulers.git</code> from your terminal or cmd.<br/>
-Step 2: Open <code>Source/DbBackupScheduler/DbBackupScheduler.sln</code> project with visual studio. <br/>
-Step 3: Open <code>Program.cs</code> file. <br/>
-Step 4: Modify this line with your server name with this. <code>Server myServer = ConnectToServer(@".\SQLEXPRESS");</code>  <br/>
-Step 5: Define your databse name here. <code>Database database = new Database { Name = "MyDb" };</code>  <br/>
-Step 6: Define your directory by modifying this line of code. <code>string directory = CheckDirectory(@"C:\BackupDb\");</code>  <br/>
+
+#### Getting Start
+1. Clone this repository<br/>
+2. Open the solution in Visual Studio (2019 recommended). <br/>
+3. Open <code>DbBackup.Client/App.config</code> file. <br/>
+4. Check the following appSettings key value and change as your need  <br/>
+```
+ <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
+ <add key="BackupDatabases" value="AuditorDb,UrlShortenDb" />    <!--existing database names of the provided server-->
+ <add key="UseRootBackupDirectory" value="false" />    <!--backup will be stored on the application hosted base directory-->
+ <add key="BackupDirectoryPath" value="C:\temp\backups\" />   <!--define a specific backup location. it will activate when UseRootBackupDirectory is false-->
+ <add key="RemoveBackupAfterXDays" value="5" />   <!--remove older backup after n days, empty for disable this rule--> 
+```
 <br/>
-All are set now. Build and run the program.
+5. All are set now. Build and run the program. <br/>
+6. Publish the client project and up it on your virtual machine and register as a windows task scheduler
 
 
 #### Rebuild Index
@@ -19,5 +29,7 @@ Command: Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? 
 Reorganize all index of a database in SQL Server <br/>
 Command: Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'
 
-### Azure VM Maintanance
+### Azure VM Maintenance
 Azure vm size scaling up and down using runbooks and monitoring https://www.petri.com/automatically-resize-azure-vm
+
+
