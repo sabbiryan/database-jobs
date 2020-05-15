@@ -25,11 +25,11 @@
 
 #### Rebuild Index
 Rebuild all index of a database in SQL Server <br/>
-Command: Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'
+Command: `Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'`
 
 #### Reorganize Index
 Reorganize all index of a database in SQL Server <br/>
-Command: Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'
+Command: `Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'`
 
 #### Azure VM Maintenance
 Azure vm size scaling up and down using runbooks and monitoring https://www.petri.com/automatically-resize-azure-vm
