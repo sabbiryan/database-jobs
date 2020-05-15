@@ -7,20 +7,21 @@
  * Register as windows task scheduler
 
 #### Getting Start
-1. Clone this repository<br/>
-2. Open the solution in Visual Studio (2019 recommended). <br/>
-3. Open <code>DbBackup.Client/App.config</code> file. <br/>
-4. Check the following appSettings key value and change as your need  <br/>
+* Clone this repository<br/>
+* Open the solution in Visual Studio (2019 recommended). <br/>
+* Open <code>DbBackup.Client/App.config</code> file. <br/>
+* Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
  <add key="BackupDatabases" value="AuditorDb,UrlShortenDb" />    <!--existing database names of the provided server-->
  <add key="UseRootBackupDirectory" value="false" />    <!--backup will be stored on the application hosted base directory-->
  <add key="BackupDirectoryPath" value="C:\temp\backups\" />   <!--define a specific backup location. it will activate when UseRootBackupDirectory is false-->
  <add key="RemoveBackupAfterXDays" value="5" />   <!--remove older backup after n days, empty for disable this rule--> 
+ <add key="PushToAzureStorage" value="true" />   <!--true for push the backup zip file to your azure storage blob--> 
 ```
-<br/>
-5. All are set now. Build and run the program. <br/>
-6. Publish the client project and up it on your virtual machine and register as a windows task scheduler
+* Configur your azure storage connection string (`only if you make PushToAzureStorage is true`)  `<add name="AzureStroage" connectionString="DefaultEndpointsProtocol=https;AccountName=yourAzureStorageAccountName;AccountKey=yourAzureStroageAccountKey;EndpointSuffix=core.windows.net" /> `
+* All are set now. Build and run the program. <br/>
+* Publish the client project and up it on your virtual machine and register as a windows task scheduler
 
 
 #### Rebuild Index
