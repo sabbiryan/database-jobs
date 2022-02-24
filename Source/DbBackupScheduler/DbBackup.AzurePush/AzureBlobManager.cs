@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
 using DbBackup.Shared;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+
+
 
 namespace DbBackup.AzurePush
 {
@@ -18,27 +20,24 @@ namespace DbBackup.AzurePush
         private const string BackupBlobContainerFolderName = "databases";
 
 
-        private static CloudBlobContainer CloudBlobContainer()
+        private static BlobContainerClient CloudBlobContainer()
         {
             ConnectionStringSettingsCollection connectionStringSettings = ConfigurationManager.ConnectionStrings;
             string storageConnection = connectionStringSettings[1].ConnectionString;
 
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection);
-
-            //create a block blob
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            BlobServiceClient blobServiceClient = new BlobServiceClient(storageConnection);
 
             //create a container
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(BackupBlobContainerName);
+            BlobContainerClient blobContainerClient = blobServiceClient.GetBlobContainerClient(BackupBlobContainerName);
 
             //create a container if it is not already exists
+            blobContainerClient.CreateIfNotExists();
 
-            if (blobContainer.CreateIfNotExists())
-            {
-                blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
-            }
+            //set permission to public
+            blobContainerClient.SetAccessPolicy(PublicAccessType.Blob);
 
-            return blobContainer;
+
+            return blobContainerClient;
         }
 
 
@@ -54,14 +53,12 @@ namespace DbBackup.AzurePush
 
             //get Blob reference
 
-            CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName); 
-            blockBlob.Properties.ContentType = "application/zip";
+            BlobClient blob = blobContainer.GetBlobClient(blobName);
 
-            using (var fileStream = File.OpenRead(filePath))
+            blob.Upload(filePath, new BlobHttpHeaders()
             {
-                blockBlob.UploadFromStream(fileStream);
-                fileStream.Flush();
-            }
+                ContentType = "application/zip"
+            });
 
         }
 
@@ -76,10 +73,10 @@ namespace DbBackup.AzurePush
 
             string blobName = $"{BackupBlobContainerFolderName}/{fileName}";
 
-            //get Blob reference
+            //get blob reference
 
-            CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
-            blockBlob.DeleteIfExists();
+            BlobClient blob = blobContainer.GetBlobClient(blobName);
+            blob.DeleteIfExists();
             
         }
 

@@ -6,6 +6,7 @@ namespace DbBackup.Shared
     public class AppSettings
     {
         public static string ServerName => ConfigurationManager.AppSettings["ServerName"];
+        public static bool BackupAllDatabases => Convert.ToBoolean(ConfigurationManager.AppSettings["BackupAllDatabases"]);
         public static string BackupDatabases => ConfigurationManager.AppSettings["BackupDatabases"];
         public static bool UseRootBackupDirectory => Convert.ToBoolean(ConfigurationManager.AppSettings["UseRootBackupDirectory"]);
         public static string BackupDirectoryPath => ConfigurationManager.AppSettings["BackupDirectoryPath"];

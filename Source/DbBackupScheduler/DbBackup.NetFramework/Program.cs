@@ -23,7 +23,7 @@ namespace DbBackup
 
             Server server = ServerConnector.Connect();
 
-            List<Database> databases = DatabaseProvider.GetDatabasesToBackup();
+            List<Database> databases = DatabaseProvider.GetDatabasesToBackup(server);
 
             BackupBuilder.GenerateBackups(server, databases);
 
