@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 
@@ -9,6 +10,8 @@ namespace DbBackup.Zipper
 
         public static string Zip(string fileName, List<string> files)
         {
+            Console.WriteLine("Start zip...");
+
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
@@ -18,6 +21,8 @@ namespace DbBackup.Zipper
             var zip = ZipFile.Open(fileName, ZipArchiveMode.Create);
             foreach (var file in files)
             {
+                Console.WriteLine($"Creating zip to {file}");
+
                 // Add the entry for each file
                 zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
             }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbBackup.Zipper", "DbBackup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbBackup.AzurePush", "DbBackup.AzurePush\DbBackup.AzurePush.csproj", "{64478AB9-236B-4035-99C9-1E67F6EBF71A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbBackup.Maintenance", "DbBackup.Maintanace\DbBackup.Maintenance.csproj", "{AF4216D3-CACF-4A17-837D-A67134465F9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{64478AB9-236B-4035-99C9-1E67F6EBF71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64478AB9-236B-4035-99C9-1E67F6EBF71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64478AB9-236B-4035-99C9-1E67F6EBF71A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4216D3-CACF-4A17-837D-A67134465F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4216D3-CACF-4A17-837D-A67134465F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4216D3-CACF-4A17-837D-A67134465F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4216D3-CACF-4A17-837D-A67134465F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

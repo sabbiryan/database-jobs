@@ -16,6 +16,8 @@ namespace DbBackup
     {
         public static void GenerateBackups(Server server, List<Database> databases)
         {
+            Console.WriteLine("Starting generate backups...");
+
             foreach (var database in databases)
             {
                 try
@@ -59,6 +61,8 @@ namespace DbBackup
 
         private static string CreateFullDbBackup(Server myServer, Database database)
         {
+            Console.WriteLine($"Creating backup of {database.Name}");
+
             var fileName = database.GetBackupFileName(DateTime.Today);
             if (File.Exists(fileName))
             {
@@ -135,7 +139,7 @@ namespace DbBackup
 
         private static void Target(object sender, PercentCompleteEventArgs percentCompleteEventArgs)
         {
-            Console.WriteLine(percentCompleteEventArgs.Percent);
+            Console.WriteLine($"{percentCompleteEventArgs.Percent} % completed...");
         }
 
         private static void Target(object sender, ServerMessageEventArgs serverMessageEventArgs)

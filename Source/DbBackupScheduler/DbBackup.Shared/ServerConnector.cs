@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Management.Smo;
+﻿using System;
+using Microsoft.SqlServer.Management.Smo;
 
 namespace DbBackup.Shared
 {
@@ -8,6 +9,8 @@ namespace DbBackup.Shared
 
         public static Server Connect()
         {
+            Console.WriteLine("Connecting to SQL Server...");
+
             var serverName = AppSettings.ServerName;
 
             Server myServer = new Server(serverName);

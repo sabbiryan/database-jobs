@@ -354,6 +354,10 @@
       <Project>{64478AB9-236B-4035-99C9-1E67F6EBF71A}</Project>
       <Name>DbBackup.AzurePush</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DbBackup.Maintanace\DbBackup.Maintenance.csproj">
+      <Project>{AF4216D3-CACF-4A17-837D-A67134465F9B}</Project>
+      <Name>DbBackup.Maintenance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DbBackup.Shared\DbBackup.Shared.csproj">
       <Project>{665A6ED4-1E22-4DE2-98C8-13C71B1FEB76}</Project>
       <Name>DbBackup.Shared</Name>

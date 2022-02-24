@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DbBackup.Maintenance;
 using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
@@ -25,9 +26,13 @@ namespace DbBackup
 
             List<Database> databases = DatabaseProvider.GetDatabasesToBackup(server);
 
+            List<string> connectionStrings = DatabaseProvider.GetConnectionStrings(server);
+
+            IndexOrganizer.Reorganize(connectionStrings);
+
             BackupBuilder.GenerateBackups(server, databases);
 
-
+            
 
             //// Get the service on the local machine
             //using (TaskService ts = new TaskService())
