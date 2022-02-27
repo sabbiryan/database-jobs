@@ -2,7 +2,7 @@
 1. Automatic DB Backup Job
 2. Automatically create a zip copy of backup file
 3. Automatically push the zip backup file to Azure Storage / AWS S3 Storage (upcoming)
-4. Automatic Index Maintenance (upcomming)
+4. Automatic Index Maintenance
 
 #### How to user it
  * Register as windows task scheduler
@@ -14,7 +14,7 @@
 * Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
- <add key="BackupAllDatabases" value="true" />   <!--backup all database of the provided server except master-->
+ <add key="BackupAllDatabases" value="true" />   <!--backup all database of the provided server except system databases-->
  <add key="BackupDatabases" value="AuditorDb,UrlShortenDb" />    <!--existing database names of the provided server-->
  <add key="UseRootBackupDirectory" value="false" />    <!--backup will be stored on the application hosted base directory-->
  <add key="BackupDirectoryPath" value="C:\temp\backups\" />   <!--define a specific backup location. it will activate when UseRootBackupDirectory is false-->
