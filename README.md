@@ -10,7 +10,7 @@
 #### Getting Start
 * Clone this repository<br/>
 * Open the solution in Visual Studio (2019 recommended). <br/>
-* Open <code>DbBackup.Client/App.config</code> file. <br/>
+* Open <code>DatabaseJobs.Client/App.config</code> file. <br/>
 * Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
