@@ -1,13 +1,12 @@
-﻿using DbBackup.AzurePush;
-using DbBackup.Shared;
-using DbBackup.Shared.Extensions;
-using DbBackup.Zipper.Extensions;
+﻿using DbBackup.Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseJobs.AzurePush;
+using DatabaseJobs.Shared;
 
 namespace DatabaseJobs.Backup
 {

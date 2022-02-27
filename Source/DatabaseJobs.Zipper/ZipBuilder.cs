@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 
-namespace DbBackup.Zipper
+namespace DatabaseJobs.Zipper
 {
     public static class ZipBuilder
     {

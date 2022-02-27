@@ -1,12 +1,9 @@
-﻿using Dapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 
-namespace DbBackup.Maintenance
+namespace DatabaseJobs.Maintenance
 {
     public static class ShrinkJob
     {

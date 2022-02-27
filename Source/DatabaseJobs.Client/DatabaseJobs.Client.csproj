@@ -8,8 +8,8 @@
     <ProjectGuid>{4FB71580-3026-4F88-8DEB-0557849CAD59}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DbBackup</RootNamespace>
-    <AssemblyName>DbBackup</AssemblyName>
+    <RootNamespace>DatabaseJobs</RootNamespace>
+    <AssemblyName>DatabaseJobs</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

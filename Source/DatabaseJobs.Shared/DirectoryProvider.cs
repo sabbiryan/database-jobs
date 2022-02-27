@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using DbBackup.Shared;
 
-namespace DbBackup.Shared
+namespace DatabaseJobs.Shared
 {
     public class DirectoryProvider
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{665A6ED4-1E22-4DE2-98C8-13C71B1FEB76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DbBackup.Shared</RootNamespace>
-    <AssemblyName>DbBackup.Shared</AssemblyName>
+    <RootNamespace>DatabaseJobs.Shared</RootNamespace>
+    <AssemblyName>DatabaseJobs.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

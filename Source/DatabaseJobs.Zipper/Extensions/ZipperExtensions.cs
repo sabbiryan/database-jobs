@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace DbBackup.Zipper.Extensions
+﻿namespace DatabaseJobs.Zipper.Extensions
 {
     public static class ZipperExtensions
     {

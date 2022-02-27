@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DatabaseJobs.Backup;
-using DbBackup.Maintenance;
-using DbBackup.Shared;
-using Microsoft.SqlServer.Management.Common;
+using DatabaseJobs.Maintenance;
+using DatabaseJobs.Shared;
+using DbBackup;
 using Microsoft.SqlServer.Management.Smo;
-using Microsoft.Win32.TaskScheduler;
-using Serilog;
-using Serilog.Core;
 
-
-namespace DbBackup
+namespace DatabaseJobs
 {
     class Program
     {

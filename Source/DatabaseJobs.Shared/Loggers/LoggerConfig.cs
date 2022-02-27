@@ -3,7 +3,7 @@ using System.IO;
 using Serilog;
 using Serilog.Events;
 
-namespace DbBackup.Shared.Loggers
+namespace DatabaseJobs.Shared.Loggers
 {
     public class LoggerConfig
     {

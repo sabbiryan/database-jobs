@@ -1,7 +1,8 @@
 ﻿using System;
+using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace DbBackup.Shared
+namespace DatabaseJobs.Shared
 {
     public class ServerConnector
     {

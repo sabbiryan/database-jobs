@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace DbBackup.Shared
+namespace DatabaseJobs.Shared
 {
     public class DatabaseProvider
     {

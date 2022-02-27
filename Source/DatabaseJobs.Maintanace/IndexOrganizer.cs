@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 
-namespace DbBackup.Maintenance
+namespace DatabaseJobs.Maintenance
 {
     public static class IndexOrganizer
     {

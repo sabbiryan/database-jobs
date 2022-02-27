@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using DatabaseJobs.Backup;
-using DbBackup.AzurePush;
+using DatabaseJobs.AzurePush;
+using DatabaseJobs.Shared.Extensions;
+using DatabaseJobs.Zipper;
+using DatabaseJobs.Zipper.Extensions;
 using DbBackup.Shared;
-using DbBackup.Shared.Extensions;
-using DbBackup.Zipper;
-using DbBackup.Zipper.Extensions;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using Serilog;
 
-namespace DbBackup
+namespace DatabaseJobs.Backup
 {
     public class BackupBuilder
     {
@@ -66,7 +65,7 @@ namespace DbBackup
                 File.Delete(fileName);
             }
 
-            Backup backup = new Backup
+            Microsoft.SqlServer.Management.Smo.Backup backup = new Microsoft.SqlServer.Management.Smo.Backup
             {
                 Action = BackupActionType.Database,
                 Database = database.Name

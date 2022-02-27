@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
+using DatabaseJobs.Shared.Enums;
 using DbBackup.Shared;
-using DbBackup.Shared.Extensions;
 
-namespace DbBackup.AzurePush
+namespace DatabaseJobs.AzurePush
 {
     public class AzureBlobManager
     {
