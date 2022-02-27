@@ -94,5 +94,6 @@ namespace DbBackup.Shared
 
             //return $"Database={databaseName};{server.ConnectionContext.ConnectionString}";
         }
+
     }
 }

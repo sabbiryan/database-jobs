@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="IndexOrganizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShrinkJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
