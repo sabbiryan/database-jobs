@@ -10,7 +10,7 @@
 #### Getting Start
 * Clone this repository<br/>
 * Open the solution in Visual Studio (2019 recommended). <br/>
-* Open <code>DbBackup.Client/App.config</code> file. <br/>
+* Open <code>DatabaseJobs.Client/App.config</code> file. <br/>
 * Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
@@ -19,6 +19,7 @@
  <add key="UseRootBackupDirectory" value="false" />    <!--backup will be stored on the application hosted base directory-->
  <add key="BackupDirectoryPath" value="C:\temp\backups\" />   <!--define a specific backup location. it will activate when UseRootBackupDirectory is false-->
  <add key="RemoveBackupAfterXDays" value="5" />   <!--remove older backup after n days, empty for disable this rule--> 
+ <add key="RemoveBakFileAfterZip" value="true" /> <!--remove .bak file after zip completion-->
  <add key="PushToAzureStorage" value="true" />   <!--true for push the backup zip file to your azure storage blob--> 
 ```
 * Configur your azure storage connection string (`only if you make PushToAzureStorage is true`)  `<add name="AzureStroage" connectionString="DefaultEndpointsProtocol=https;AccountName=yourAzureStorageAccountName;AccountKey=yourAzureStroageAccountKey;EndpointSuffix=core.windows.net" /> `
