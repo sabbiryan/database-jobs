@@ -329,7 +329,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackupBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -350,6 +349,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseJobs.Backup\DatabaseJobs.Backup.csproj">
+      <Project>{f319a8eb-d421-4c08-beca-155f4dcac1a2}</Project>
+      <Name>DatabaseJobs.Backup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DbBackup.AzurePush\DbBackup.AzurePush.csproj">
       <Project>{64478AB9-236B-4035-99C9-1E67F6EBF71A}</Project>
       <Name>DbBackup.AzurePush</Name>

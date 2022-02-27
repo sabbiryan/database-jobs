@@ -277,6 +277,8 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="DatabaseProvider.cs" />
     <Compile Include="DirectoryProvider.cs" />
+    <Compile Include="Enums\BackupFileType.cs" />
+    <Compile Include="Enums\BackupStorage.cs" />
     <Compile Include="Extensions\FillingExtensions.cs" />
     <Compile Include="Loggers\LoggerConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

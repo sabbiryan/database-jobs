@@ -9,8 +9,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 using DbBackup.Shared;
-
-
+using DbBackup.Shared.Extensions;
 
 namespace DbBackup.AzurePush
 {
@@ -47,7 +46,21 @@ namespace DbBackup.AzurePush
 
             var blobContainer = CloudBlobContainer();
 
+            
             var fileName = Path.GetFileName(filePath);
+            
+
+            var fileExtension = Path.GetExtension(filePath);
+            string contentType = "";
+            if (fileExtension.ToLower().Equals($".{nameof(BackupFileType.Bak).ToLower()}"))
+            {
+                contentType = "application/octet-stream";
+            }
+            else if (fileExtension.ToLower().Equals($".{nameof(BackupFileType.Zip).ToLower()}"))
+            {
+                contentType = "application/zip";
+            }
+
 
             string blobName = $"{BackupBlobContainerFolderName}/{fileName}";
 
@@ -57,7 +70,7 @@ namespace DbBackup.AzurePush
 
             blob.Upload(filePath, new BlobHttpHeaders()
             {
-                ContentType = "application/zip"
+                ContentType = contentType
             });
 
         }

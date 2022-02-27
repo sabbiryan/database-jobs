@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseJobs.Backup;
 using DbBackup.Maintenance;
 using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Common;
@@ -32,7 +33,8 @@ namespace DbBackup
 
             BackupBuilder.GenerateBackups(server, databases);
 
-            
+            BackupCleaner.CleanAllBackups();
+
 
             //// Get the service on the local machine
             //using (TaskService ts = new TaskService())
