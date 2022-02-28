@@ -56,7 +56,4 @@ Next
 * Create a task scheduler using this script
 * Follow https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/managing-iis-log-file-storage#03
 
-#### Azure VM Maintenance
-Azure vm size scaling up and down using runbooks and monitoring https://www.petri.com/automatically-resize-azure-vm
-
 
