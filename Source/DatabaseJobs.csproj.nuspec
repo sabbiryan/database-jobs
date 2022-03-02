@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>DatabaseJobs.csproj</id>
+    <version>1.0.0</version>
+    <authors>Sabbir</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/sabbiryan/database-jobs</projectUrl>
+    <description>Taking backups, index rebuild or reorganize, push backups to azure storage or aws s3. A complete database maintenance jobs package.</description>
+    <releaseNotes>First nuget release. Taking backups, index rebuild or reorganize, push zip backup package to azure storage or aws s3</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>DatabaseJobs DatabaseBackup IndexRebuild IndexReorganize BackupUploadToAzureStorage BackupploadToAwsS3</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="SampleDependency" version="1.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
