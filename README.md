@@ -2,7 +2,8 @@
 1. Automatic DB Backup Job
 2. Automatically create a zip copy of backup file
 3. Automatically push the zip backup file to Azure Storage
-4. Automatic Index Maintenance
+4. Automatically push the zip backup file to AWS S3 Bucket
+5. Automatic Index Maintenance
 
 #### How to user it
  * Register as windows task scheduler
