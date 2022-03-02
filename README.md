@@ -2,7 +2,8 @@
 1. Automatic DB Backup Job
 2. Automatically create a zip copy of backup file
 3. Automatically push the zip backup file to Azure Storage
-4. Automatic Index Maintenance
+4. Automatically push the zip backup file to AWS S3 Bucket
+5. Automatic Index Maintenance
 
 #### How to user it
  * Register as windows task scheduler
@@ -14,6 +15,7 @@
 * Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
+ <add key="EnableIndexMaintenance" value="true"/> <!--enable index reorganize before taking backup, rebild index after shrink-->
  <add key="BackupAllDatabases" value="true" />   <!--backup all database of the provided server except system databases-->
  <add key="BackupDatabases" value="AuditorDb,UrlShortenDb" />    <!--existing database names of the provided server-->
  <add key="UseRootBackupDirectory" value="false" />    <!--backup will be stored on the application hosted base directory-->
@@ -21,6 +23,12 @@
  <add key="RemoveBackupAfterXDays" value="5" />   <!--remove older backup after n days, empty for disable this rule--> 
  <add key="RemoveBakFileAfterZip" value="true" /> <!--remove .bak file after zip completion-->
  <add key="PushToAzureStorage" value="true" />   <!--true for push the backup zip file to your azure storage blob--> 
+ <!--aws s3 bucket config-->
+ <add key="PushToAwsS3Bucket" value="false"/>
+ <add key="AwsAccessKey" value="*your aws access key*"/>
+ <add key="AwsSecretKey" value="*your aws secret key*"/>
+ <add key="S3BucketName" value="*your bucket name*"/>
+ <add key="S3BucketRegion" value="ap-southeast-1"/>
 ```
 * Configur your azure storage connection string (`only if you make PushToAzureStorage is true`)  `<add name="AzureStroage" connectionString="DefaultEndpointsProtocol=https;AccountName=yourAzureStorageAccountName;AccountKey=yourAzureStroageAccountKey;EndpointSuffix=core.windows.net" /> `
 * All are set now. Build and run the program. <br/>
