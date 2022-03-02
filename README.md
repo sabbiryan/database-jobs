@@ -1,7 +1,7 @@
 #### Features
 1. Automatic DB Backup Job
 2. Automatically create a zip copy of backup file
-3. Automatically push the zip backup file to Azure Storage / AWS S3 Storage (upcoming)
+3. Automatically push the zip backup file to Azure Storage
 4. Automatic Index Maintenance
 
 #### How to user it
@@ -55,8 +55,5 @@ Next
 * Save the file into C:\inetpub\logs\_Deletion.vbs
 * Create a task scheduler using this script
 * Follow https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/managing-iis-log-file-storage#03
-
-#### Azure VM Maintenance
-Azure vm size scaling up and down using runbooks and monitoring https://www.petri.com/automatically-resize-azure-vm
 
 
