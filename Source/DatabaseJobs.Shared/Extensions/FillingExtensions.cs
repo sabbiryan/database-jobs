@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using DatabaseJobs.Shared.Enums;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DatabaseJobs.Shared.Extensions
@@ -16,6 +18,24 @@ namespace DatabaseJobs.Shared.Extensions
             string fileName = directory + database.Name + "_" + date.Date.Year + "-" + month + "-" + day + ".bak";
 
             return fileName;
+        }
+
+        public static string GetContentType(this string fileName)
+        {
+            var fileExtension = Path.GetExtension(fileName);
+            
+            string contentType = "";
+
+            if (fileExtension != null && fileExtension.ToLower().Equals($".{nameof(BackupFileType.Bak).ToLower()}"))
+            {
+                contentType = "application/octet-stream";
+            }
+            else if (fileExtension != null && fileExtension.ToLower().Equals($".{nameof(BackupFileType.Zip).ToLower()}"))
+            {
+                contentType = "application/zip";
+            }
+
+            return contentType;
         }
     }
 }

@@ -6,6 +6,7 @@ namespace DbBackup.Shared
     public class AppSettings
     {
         public static string ServerName => ConfigurationManager.AppSettings["ServerName"];
+        public static bool EnableIndexMaintenance => Convert.ToBoolean(ConfigurationManager.AppSettings["EnableIndexMaintenance"]);
         public static bool BackupAllDatabases => Convert.ToBoolean(ConfigurationManager.AppSettings["BackupAllDatabases"]);
         public static string BackupDatabases => ConfigurationManager.AppSettings["BackupDatabases"];
         public static bool UseRootBackupDirectory => Convert.ToBoolean(ConfigurationManager.AppSettings["UseRootBackupDirectory"]);
@@ -24,5 +25,11 @@ namespace DbBackup.Shared
             return days;
         }
 
+
+        public static string AwsAccessKey => ConfigurationManager.AppSettings["AwsAccessKey"];
+        public static string AwsSecretKey => ConfigurationManager.AppSettings["AwsSecretKey"];
+        public static string S3BucketName => ConfigurationManager.AppSettings["S3BucketName"];
+        public static string S3BucketRegion => ConfigurationManager.AppSettings["S3BucketRegion"];
+        public static bool PushToAwsS3Bucket => Convert.ToBoolean(ConfigurationManager.AppSettings["PushToAwsS3Bucket"]);
     }
 }

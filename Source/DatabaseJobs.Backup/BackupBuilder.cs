@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using DatabaseJobs.AzurePush;
+using DatabaseJobs.PushToAws;
 using DatabaseJobs.Shared.Extensions;
 using DatabaseJobs.Zipper;
 using DatabaseJobs.Zipper.Extensions;
@@ -43,6 +44,7 @@ namespace DatabaseJobs.Backup
                     //Push to azure storage
                     AzureBlobManager.Push(zip);
 
+                    AwsS3ObjectManager.Push(zip);
 
                 }
                 catch (Exception e)

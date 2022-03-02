@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
+using DbBackup.Shared;
 
 namespace DatabaseJobs.Maintenance
 {
@@ -12,6 +13,8 @@ namespace DatabaseJobs.Maintenance
 
         public static void  Reorganize(List<string> connectionStrings)
         {
+            if(!AppSettings.EnableIndexMaintenance) return;
+
             Console.WriteLine("Starting index reorganize...");
 
             foreach (var connectionString in connectionStrings)
@@ -28,6 +31,8 @@ namespace DatabaseJobs.Maintenance
         
         public static void Rebuild(List<string> connectionStrings)
         {
+            if (!AppSettings.EnableIndexMaintenance) return;
+
             Console.WriteLine("Starting index rebuild...");
 
             foreach (var connectionString in connectionStrings)

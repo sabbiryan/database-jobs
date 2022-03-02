@@ -1,8 +1,10 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using DatabaseJobs.Shared.Enums;
+using DatabaseJobs.Shared.Extensions;
 using DbBackup.Shared;
 
 namespace DatabaseJobs.AzurePush
@@ -38,22 +40,12 @@ namespace DatabaseJobs.AzurePush
         {
             if(!AppSettings.PushToAzureStorage) return;
 
+            Console.WriteLine($"Pushing {filePath} to azure blob storage...");
+
             var blobContainer = CloudBlobContainer();
 
             
             var fileName = Path.GetFileName(filePath);
-            
-
-            var fileExtension = Path.GetExtension(filePath);
-            string contentType = "";
-            if (fileExtension.ToLower().Equals($".{nameof(BackupFileType.Bak).ToLower()}"))
-            {
-                contentType = "application/octet-stream";
-            }
-            else if (fileExtension.ToLower().Equals($".{nameof(BackupFileType.Zip).ToLower()}"))
-            {
-                contentType = "application/zip";
-            }
 
 
             string blobName = $"{BackupBlobContainerFolderName}/{fileName}";
@@ -64,7 +56,7 @@ namespace DatabaseJobs.AzurePush
 
             blob.Upload(filePath, new BlobHttpHeaders()
             {
-                ContentType = contentType
+                ContentType = fileName.GetContentType()
             });
 
         }

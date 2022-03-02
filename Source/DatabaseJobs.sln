@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.Client", "DatabaseJobs.Client\DatabaseJobs.Client.csproj", "{4FB71580-3026-4F88-8DEB-0557849CAD59}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.Maintenance", "DatabaseJobs.Maintanace\DatabaseJobs.Maintenance.csproj", "{AF4216D3-CACF-4A17-837D-A67134465F9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.Backup", "DatabaseJobs.Backup\DatabaseJobs.Backup.csproj", "{F319A8EB-D421-4C08-BECA-155F4DCAC1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.PushToAws", "DatabaseJobs.PushToAws\DatabaseJobs.PushToAws.csproj", "{C99828C4-B892-487D-99BC-6D3B6DB48A10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F319A8EB-D421-4C08-BECA-155F4DCAC1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F319A8EB-D421-4C08-BECA-155F4DCAC1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F319A8EB-D421-4C08-BECA-155F4DCAC1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

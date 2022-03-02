@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseJobs.AzurePush;
+using DatabaseJobs.PushToAws;
 using DatabaseJobs.Shared;
 
 namespace DatabaseJobs.Backup
@@ -54,6 +55,11 @@ namespace DatabaseJobs.Backup
             if (AppSettings.PushToAzureStorage)
             {
                 AzureBlobManager.Delete(fileName);
+            }
+
+            if (AppSettings.PushToAwsS3Bucket)
+            {
+                AwsS3ObjectManager.Delete(fileName);
             }
 
             return true;
