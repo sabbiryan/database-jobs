@@ -44,6 +44,7 @@ namespace DatabaseJobs.Backup
                     //Push to azure storage
                     AzureBlobManager.Push(zip);
 
+                    //Push to aws s3
                     AwsS3ObjectManager.Push(zip);
 
                 }
