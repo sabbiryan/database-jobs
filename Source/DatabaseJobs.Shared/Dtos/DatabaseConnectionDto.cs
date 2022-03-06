@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DatabaseJobs.Shared.Dtos
 {
-    public class DatabaseServerDto
+    public class DatabaseConnectionDto
     {
-        public DatabaseServerDto(string serverName, string databaseName)
+        public DatabaseConnectionDto(string serverName, string databaseName)
         {
             ServerName = serverName;
             DatabaseName = databaseName;

@@ -8,7 +8,7 @@ namespace DatabaseJobs.Shared
 {
     public class DatabaseProvider
     {
-        private static List<DatabaseServerDto> databaseServers = new List<DatabaseServerDto>();
+        private static readonly List<DatabaseConnectionDto> DatabaseConnections = new List<DatabaseConnectionDto>();
 
         private static bool IgnoreSystemDb(Database database)
         {
@@ -54,11 +54,11 @@ namespace DatabaseJobs.Shared
 
        
 
-        public static List<DatabaseServerDto> GetDatabseConnections(Server server)
+        public static List<DatabaseConnectionDto> GetDatabaseConnections(Server server)
         {
-            Console.WriteLine("Collecting connection strings of databases...");
+            Console.WriteLine("Collecting database connections...");
 
-            databaseServers.Clear();
+            DatabaseConnections.Clear();
 
             var backupAllDatabases = AppSettings.BackupAllDatabases;
 
@@ -70,7 +70,7 @@ namespace DatabaseJobs.Shared
 
                     var databaseServer = BuildConnectionString(server, database.Name);
 
-                    databaseServers.Add(databaseServer);
+                    DatabaseConnections.Add(databaseServer);
                 }
             }
             else
@@ -82,19 +82,19 @@ namespace DatabaseJobs.Shared
                 {
                     var databaseServer = BuildConnectionString(server, databaseName);
 
-                    databaseServers.Add(databaseServer);
+                    DatabaseConnections.Add(databaseServer);
                 }
 
             }
             
 
-            return databaseServers;
+            return DatabaseConnections;
         }
 
-        private static DatabaseServerDto BuildConnectionString(Server server, string databaseName)
+        private static DatabaseConnectionDto BuildConnectionString(Server server, string databaseName)
         {
 
-            return new DatabaseServerDto(server.Name, databaseName);
+            return new DatabaseConnectionDto(server.Name, databaseName);
 
             //return $"Data Source={server.Name};Initial Catalog={databaseName};Integrated Security=true;";
         }

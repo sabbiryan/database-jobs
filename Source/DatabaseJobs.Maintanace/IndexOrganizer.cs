@@ -12,13 +12,13 @@ namespace DatabaseJobs.Maintenance
         private const string SpReorganize = @"Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'";
         private const string SpRebuild = @"Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'";
 
-        public static void  Reorganize(List<DatabaseServerDto> databaseServers)
+        public static void  Reorganize(List<DatabaseConnectionDto> databaseConnections)
         {
             if(!AppSettings.EnableIndexMaintenance) return;
 
             Console.WriteLine("Starting index reorganize...");
 
-            foreach (var databaseServer in databaseServers)
+            foreach (var databaseServer in databaseConnections)
             {
                 using (var con = new SqlConnection(databaseServer.ConnectionString))
                 {
@@ -30,13 +30,13 @@ namespace DatabaseJobs.Maintenance
         }
         
         
-        public static void Rebuild(List<DatabaseServerDto> databaseServers)
+        public static void Rebuild(List<DatabaseConnectionDto> databaseConnections)
         {
             if (!AppSettings.EnableIndexMaintenance) return;
 
             Console.WriteLine("Starting index rebuild...");
 
-            foreach (var databaseServer in databaseServers)
+            foreach (var databaseServer in databaseConnections)
             {
                 using (var con = new SqlConnection(databaseServer.ConnectionString))
                 {

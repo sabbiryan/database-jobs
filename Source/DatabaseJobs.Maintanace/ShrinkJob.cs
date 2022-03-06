@@ -10,13 +10,13 @@ namespace DatabaseJobs.Maintenance
     public static class ShrinkJob
     {
 
-        public static void Shrink(List<DatabaseServerDto> databaseServers)
+        public static void Shrink(List<DatabaseConnectionDto> databaseConnections)
         {
             if (!AppSettings.EnableShrink) return;
 
             Console.WriteLine("Starting shrink...");
 
-            foreach (var databaseServer in databaseServers)
+            foreach (var databaseServer in databaseConnections)
             {
                 using (var con = new SqlConnection(databaseServer.ConnectionString))
                 {
@@ -26,7 +26,7 @@ namespace DatabaseJobs.Maintenance
                 }
             }
 
-            IndexOrganizer.Rebuild(databaseServers);
+            IndexOrganizer.Rebuild(databaseConnections);
         }
     }
 }

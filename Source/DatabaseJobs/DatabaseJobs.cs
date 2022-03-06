@@ -17,11 +17,11 @@ namespace DatabaseJobs
         {
             Server server = ServerConnector.Connect();
            
-            List<DatabaseServerDto> databaseServers = DatabaseProvider.GetDatabseConnections(server);
+            List<DatabaseConnectionDto> databaseConnections = DatabaseProvider.GetDatabaseConnections(server);
 
-            ShrinkJob.Shrink(databaseServers);
+            ShrinkJob.Shrink(databaseConnections);
 
-            IndexOrganizer.Reorganize(databaseServers);
+            IndexOrganizer.Reorganize(databaseConnections);
 
             List<Database> databases = DatabaseProvider.GetDatabasesToBackup(server);
 
