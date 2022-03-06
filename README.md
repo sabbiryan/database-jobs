@@ -4,6 +4,7 @@
 3. Automatically push the zip backup file to Azure Storage
 4. Automatically push the zip backup file to AWS S3 Bucket
 5. Automatic Index Maintenance
+6. Shrik database to 10% and rebuild index after shrink
 
 #### How to user it
  * Register as windows task scheduler
@@ -15,6 +16,7 @@
 * Check the following appSettings key value and change as your need  <br/>
 ```
  <add key="ServerName" value=".\SQLEXPRESS" />    <!--database server name-->
+ <add key="EnableShrink" value="true" /> <!--enable index reorganize before taking backup, rebild index after shrink-->
  <add key="EnableIndexMaintenance" value="true"/> <!--enable index reorganize before taking backup, rebild index after shrink-->
  <add key="BackupAllDatabases" value="true" />   <!--backup all database of the provided server except system databases-->
  <add key="BackupDatabases" value="AuditorDb,UrlShortenDb" />    <!--existing database names of the provided server-->
