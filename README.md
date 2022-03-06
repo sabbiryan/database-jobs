@@ -41,7 +41,7 @@ Command: `Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ?
 
 #### Reorganize Index
 Reorganize all index of a database in SQL Server <br/>
-Command: `Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'`
+Command: `Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'`
 
 #### Delete Old IIS Logs by Script
 ```
