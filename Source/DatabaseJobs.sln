@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.Backup", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs.PushToAws", "DatabaseJobs.PushToAws\DatabaseJobs.PushToAws.csproj", "{C99828C4-B892-487D-99BC-6D3B6DB48A10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseJobs", "DatabaseJobs\DatabaseJobs.csproj", "{FE27F65E-351B-44F0-AC5E-CD27D7F71D77}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C99828C4-B892-487D-99BC-6D3B6DB48A10}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE27F65E-351B-44F0-AC5E-CD27D7F71D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE27F65E-351B-44F0-AC5E-CD27D7F71D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE27F65E-351B-44F0-AC5E-CD27D7F71D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE27F65E-351B-44F0-AC5E-CD27D7F71D77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
