@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
+using DatabaseJobs.Shared.Dtos;
 using DbBackup.Shared;
 
 namespace DatabaseJobs.Maintenance
@@ -9,19 +10,19 @@ namespace DatabaseJobs.Maintenance
     public static class IndexOrganizer
     {
         private const string SpReorganize = @"Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'";
-        private const string SpRebuild = @"Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Rebuild'";
+        private const string SpRebuild = @"Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'";
 
-        public static void  Reorganize(List<string> connectionStrings)
+        public static void  Reorganize(List<DatabaseServerDto> databaseServers)
         {
             if(!AppSettings.EnableIndexMaintenance) return;
 
             Console.WriteLine("Starting index reorganize...");
 
-            foreach (var connectionString in connectionStrings)
+            foreach (var databaseServer in databaseServers)
             {
-                using (var con = new SqlConnection(connectionString))
+                using (var con = new SqlConnection(databaseServer.ConnectionString))
                 {
-                    Console.WriteLine($"Reorganizing...{connectionString}");
+                    Console.WriteLine($"Reorganizing...{databaseServer.ConnectionString}");
 
                     con.Query(SpReorganize, commandTimeout: 24 * 60 * 60);
                 }
@@ -29,17 +30,17 @@ namespace DatabaseJobs.Maintenance
         }
         
         
-        public static void Rebuild(List<string> connectionStrings)
+        public static void Rebuild(List<DatabaseServerDto> databaseServers)
         {
             if (!AppSettings.EnableIndexMaintenance) return;
 
             Console.WriteLine("Starting index rebuild...");
 
-            foreach (var connectionString in connectionStrings)
+            foreach (var databaseServer in databaseServers)
             {
-                using (var con = new SqlConnection(connectionString))
+                using (var con = new SqlConnection(databaseServer.ConnectionString))
                 {
-                    Console.WriteLine($"Rebuilding...{connectionString}");
+                    Console.WriteLine($"Rebuilding...{databaseServer.ConnectionString}");
 
                     con.Query(SpRebuild, commandTimeout: 24 * 60 * 60);
                 }

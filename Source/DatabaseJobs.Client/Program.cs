@@ -2,6 +2,7 @@
 using DatabaseJobs.Backup;
 using DatabaseJobs.Maintenance;
 using DatabaseJobs.Shared;
+using DatabaseJobs.Shared.Dtos;
 using DbBackup;
 using Microsoft.SqlServer.Management.Smo;
 
@@ -14,12 +15,14 @@ namespace DatabaseJobs
             //LoggerConfig.Register();
 
             Server server = ServerConnector.Connect();
+           
+            List<DatabaseServerDto> databaseServers = DatabaseProvider.GetDatabseConnections(server);
+
+            ShrinkJob.Shrink(databaseServers);
+
+            IndexOrganizer.Reorganize(databaseServers);
 
             List<Database> databases = DatabaseProvider.GetDatabasesToBackup(server);
-
-            List<string> connectionStrings = DatabaseProvider.GetConnectionStrings(server);
-
-            IndexOrganizer.Reorganize(connectionStrings);
 
             BackupBuilder.GenerateBackups(server, databases);
 
@@ -46,10 +49,6 @@ namespace DatabaseJobs
             //    ts.RootFolder.DeleteTask("Test");
             //}
         }
-
-
-
-
 
     }
 }

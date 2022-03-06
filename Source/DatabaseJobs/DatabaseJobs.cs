@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DatabaseJobs.Backup;
 using DatabaseJobs.Maintenance;
 using DatabaseJobs.Shared;
+using DatabaseJobs.Shared.Dtos;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DatabaseJobs
@@ -15,12 +16,14 @@ namespace DatabaseJobs
         public void Run()
         {
             Server server = ServerConnector.Connect();
+           
+            List<DatabaseServerDto> databaseServers = DatabaseProvider.GetDatabseConnections(server);
+
+            ShrinkJob.Shrink(databaseServers);
+
+            IndexOrganizer.Reorganize(databaseServers);
 
             List<Database> databases = DatabaseProvider.GetDatabasesToBackup(server);
-
-            List<string> connectionStrings = DatabaseProvider.GetConnectionStrings(server);
-
-            IndexOrganizer.Reorganize(connectionStrings);
 
             BackupBuilder.GenerateBackups(server, databases);
 

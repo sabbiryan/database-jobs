@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DatabaseJobs.Shared.Dtos;
 using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Smo;
 
@@ -7,6 +8,8 @@ namespace DatabaseJobs.Shared
 {
     public class DatabaseProvider
     {
+        private static List<DatabaseServerDto> databaseServers = new List<DatabaseServerDto>();
+
         private static bool IgnoreSystemDb(Database database)
         {
             if (database.IsSystemObject) return true;
@@ -51,11 +54,11 @@ namespace DatabaseJobs.Shared
 
        
 
-        public static List<string> GetConnectionStrings(Server server)
+        public static List<DatabaseServerDto> GetDatabseConnections(Server server)
         {
             Console.WriteLine("Collecting connection strings of databases...");
 
-            var connectionStrings = new List<string>();
+            databaseServers.Clear();
 
             var backupAllDatabases = AppSettings.BackupAllDatabases;
 
@@ -65,9 +68,9 @@ namespace DatabaseJobs.Shared
                 {
                     if (IgnoreSystemDb(database)) continue;
 
-                    var connectionString = BuildConnectionString(server, database.Name);
+                    var databaseServer = BuildConnectionString(server, database.Name);
 
-                    connectionStrings.Add(connectionString);
+                    databaseServers.Add(databaseServer);
                 }
             }
             else
@@ -77,23 +80,23 @@ namespace DatabaseJobs.Shared
 
                 foreach (var databaseName in databaseNames)
                 {
-                    var connectionString = BuildConnectionString(server, databaseName);
+                    var databaseServer = BuildConnectionString(server, databaseName);
 
-                    connectionStrings.Add(connectionString);
+                    databaseServers.Add(databaseServer);
                 }
 
             }
             
 
-            return connectionStrings;
+            return databaseServers;
         }
 
-        private static string BuildConnectionString(Server server, string databaseName)
+        private static DatabaseServerDto BuildConnectionString(Server server, string databaseName)
         {
-            
-            return $"Data Source={server.Name};Initial Catalog={databaseName};Integrated Security=true;";
 
-            //return $"Database={databaseName};{server.ConnectionContext.ConnectionString}";
+            return new DatabaseServerDto(server.Name, databaseName);
+
+            //return $"Data Source={server.Name};Initial Catalog={databaseName};Integrated Security=true;";
         }
 
     }

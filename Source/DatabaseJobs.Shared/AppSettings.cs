@@ -6,6 +6,7 @@ namespace DbBackup.Shared
     public class AppSettings
     {
         public static string ServerName => ConfigurationManager.AppSettings["ServerName"];
+        public static bool EnableShrink => Convert.ToBoolean(ConfigurationManager.AppSettings["EnableShrink"]);
         public static bool EnableIndexMaintenance => Convert.ToBoolean(ConfigurationManager.AppSettings["EnableIndexMaintenance"]);
         public static bool BackupAllDatabases => Convert.ToBoolean(ConfigurationManager.AppSettings["BackupAllDatabases"]);
         public static string BackupDatabases => ConfigurationManager.AppSettings["BackupDatabases"];
