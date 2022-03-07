@@ -8,9 +8,9 @@ using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
+using DatabaseJobs.Shared;
 using DatabaseJobs.Shared.Enums;
 using DatabaseJobs.Shared.Extensions;
-using DbBackup.Shared;
 using Serilog;
 
 namespace DatabaseJobs.PushToAws

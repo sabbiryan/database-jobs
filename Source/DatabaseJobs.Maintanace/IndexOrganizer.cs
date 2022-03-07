@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
-using DatabaseJobs.Shared.Dtos;
-using DbBackup.Shared;
+using DatabaseJobs.Shared;
+using DatabaseJobs.Shared.Models;
 
 namespace DatabaseJobs.Maintenance
 {
@@ -12,7 +12,7 @@ namespace DatabaseJobs.Maintenance
         private const string SpReorganize = @"Exec sp_msforeachtable 'ALTER INDEX ALL ON ? Reorganize'";
         private const string SpRebuild = @"Exec sp_msforeachtable 'SET QUOTED_IDENTIFIER ON; ALTER INDEX ALL ON ? REBUILD'";
 
-        public static void  Reorganize(List<DatabaseConnectionDto> databaseConnections)
+        public static void  Reorganize(List<DatabaseConnector> databaseConnections)
         {
             if(!AppSettings.EnableIndexMaintenance) return;
 
@@ -30,7 +30,7 @@ namespace DatabaseJobs.Maintenance
         }
         
         
-        public static void Rebuild(List<DatabaseConnectionDto> databaseConnections)
+        public static void Rebuild(List<DatabaseConnector> databaseConnections)
         {
             if (!AppSettings.EnableIndexMaintenance) return;
 

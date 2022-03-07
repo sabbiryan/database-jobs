@@ -1,5 +1,4 @@
 ﻿using System;
-using DbBackup.Shared;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DatabaseJobs.Shared

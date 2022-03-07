@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DatabaseJobs.Shared.Dtos
+﻿namespace DatabaseJobs.Shared.Models
 {
-    public class DatabaseConnectionDto
+    public class DatabaseConnector
     {
-        public DatabaseConnectionDto(string serverName, string databaseName)
+        public DatabaseConnector(string serverName, string databaseName)
         {
             ServerName = serverName;
             DatabaseName = databaseName;

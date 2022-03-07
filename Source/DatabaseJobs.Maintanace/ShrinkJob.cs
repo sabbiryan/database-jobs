@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
-using DatabaseJobs.Shared.Dtos;
-using DbBackup.Shared;
+using DatabaseJobs.Shared;
+using DatabaseJobs.Shared.Models;
 
 namespace DatabaseJobs.Maintenance
 {
     public static class ShrinkJob
     {
 
-        public static void Shrink(List<DatabaseConnectionDto> databaseConnections)
+        public static void Shrink(List<DatabaseConnector> databaseConnections)
         {
             if (!AppSettings.EnableShrink) return;
 

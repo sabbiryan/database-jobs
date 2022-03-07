@@ -3,9 +3,9 @@ using System.Configuration;
 using System.IO;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using DatabaseJobs.Shared;
 using DatabaseJobs.Shared.Enums;
 using DatabaseJobs.Shared.Extensions;
-using DbBackup.Shared;
 
 namespace DatabaseJobs.AzurePush
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace DbBackup.Shared
+namespace DatabaseJobs.Shared
 {
     public class AppSettings
     {

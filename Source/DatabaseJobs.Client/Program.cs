@@ -2,8 +2,7 @@
 using DatabaseJobs.Backup;
 using DatabaseJobs.Maintenance;
 using DatabaseJobs.Shared;
-using DatabaseJobs.Shared.Dtos;
-using DbBackup;
+using DatabaseJobs.Shared.Models;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DatabaseJobs
@@ -16,7 +15,7 @@ namespace DatabaseJobs
 
             Server server = ServerConnector.Connect();
            
-            List<DatabaseConnectionDto> databaseConnections = DatabaseProvider.GetDatabaseConnections(server);
+            List<DatabaseConnector> databaseConnections = DatabaseProvider.GetDatabaseConnections(server);
 
             ShrinkJob.Shrink(databaseConnections);
 

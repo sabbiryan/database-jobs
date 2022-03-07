@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using DatabaseJobs.Shared.Dtos;
-using DbBackup.Shared;
+using DatabaseJobs.Shared.Models;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DatabaseJobs.Shared
 {
     public class DatabaseProvider
     {
-        private static readonly List<DatabaseConnectionDto> DatabaseConnections = new List<DatabaseConnectionDto>();
+        private static readonly List<DatabaseConnector> DatabaseConnections = new List<DatabaseConnector>();
 
         private static bool IgnoreSystemDb(Database database)
         {
@@ -54,7 +53,7 @@ namespace DatabaseJobs.Shared
 
        
 
-        public static List<DatabaseConnectionDto> GetDatabaseConnections(Server server)
+        public static List<DatabaseConnector> GetDatabaseConnections(Server server)
         {
             Console.WriteLine("Collecting database connections...");
 
@@ -91,10 +90,10 @@ namespace DatabaseJobs.Shared
             return DatabaseConnections;
         }
 
-        private static DatabaseConnectionDto BuildConnectionString(Server server, string databaseName)
+        private static DatabaseConnector BuildConnectionString(Server server, string databaseName)
         {
 
-            return new DatabaseConnectionDto(server.Name, databaseName);
+            return new DatabaseConnector(server.Name, databaseName);
 
             //return $"Data Source={server.Name};Initial Catalog={databaseName};Integrated Security=true;";
         }
