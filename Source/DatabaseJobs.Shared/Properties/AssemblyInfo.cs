@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DbBackup.Shared")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DatabaseJobs.Shared")]
+[assembly: AssemblyDescription("Common base library for Database Jobs")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DbBackup.Shared")]
+[assembly: AssemblyCompany("datacrud")]
+[assembly: AssemblyProduct("DatabaseJobs.Shared")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

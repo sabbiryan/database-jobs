@@ -13,10 +13,12 @@ namespace DatabaseJobs.Shared
 
             var serverName = AppSettings.ServerName;
 
-            Server myServer = new Server(serverName);
-            myServer.ConnectionContext.LoginSecure = true;
-            myServer.ConnectionContext.Connect();
-            return myServer;
+            Server server = new Server(serverName);
+
+            server.ConnectionContext.LoginSecure = true;
+            server.ConnectionContext.Connect();
+
+            return server;
         }
 
 

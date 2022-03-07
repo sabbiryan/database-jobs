@@ -9,7 +9,7 @@
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/sabbiryan/database-jobs</projectUrl>
     <description>Taking backups, index rebuild or reorganize, push backups to azure storage or aws s3. A complete database maintenance jobs package.</description>
-    <releaseNotes>First nuget release. Taking backups, index rebuild or reorganize, push zip backup package to azure storage or aws s3</releaseNotes>
+    <releaseNotes>Common base library for Database Jobs</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>DatabaseJobs DatabaseBackup IndexRebuild IndexReorganize BackupUploadToAzureStorage BackupploadToAwsS3</tags>
     <dependencies>
