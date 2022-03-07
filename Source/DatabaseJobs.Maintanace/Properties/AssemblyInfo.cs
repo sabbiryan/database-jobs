@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DbBackup.Maintanace")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DatabaseJobs.Maintenance")]
+[assembly: AssemblyDescription("Database index rebuild reorganizer and shrink package")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DbBackup.Maintanace")]
+[assembly: AssemblyCompany("datacrud")]
+[assembly: AssemblyProduct("DatabaseJobs.Maintenance")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

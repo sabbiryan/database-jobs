@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DbBackup.Zipper")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DatabaseJobs.Zipper")]
+[assembly: AssemblyDescription("Database Jobs core library for zip")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("datacrud")]
 [assembly: AssemblyProduct("DbBackup.Zipper")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

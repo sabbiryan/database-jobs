@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DatabaseJobs.PushToAws")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Database backup file upload to aws s3 package")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("datacrud")]
 [assembly: AssemblyProduct("DatabaseJobs.PushToAws")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DatabaseJobs.Backup")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Database backup jobs core package")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("datacrud")]
 [assembly: AssemblyProduct("DatabaseJobs.Backup")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
